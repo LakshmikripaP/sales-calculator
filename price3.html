@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anthus Pharmaceuticals - Sales Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    input { width: 60px; }
+    .total-row { font-weight: bold; background-color: #e9f7ef; }
+  </style>
+</head>
+<body>
+  <h2>Anthus Pharmaceuticals - Sales Entry</h2>
+  <button type="button" onclick="calculateTotals()">Calculate Totals</button>
+<button onclick="updateSalesData()">Update Sales Data</button>
+<button onclick="saveSalesData()">Save Sales Data</button>
+
+
+  <form id="salesForm">
+    <table id="salesTable">
+      <thead>
+        <tr>
+          <th>Sl. No.</th>
+          <th>Product Name</th>
+          <th>PTS Excl. GST</th>
+          <th>Jan</th><th>Jan Total</th>
+          <th>Feb</th><th>Feb Total</th>
+          <th>Mar</th><th>Mar Total</th>
+          <th>Apr</th><th>Apr Total</th>
+          <th>May</th><th>May Total</th>
+          <th>Jun</th><th>Jun Total</th>
+          <th>Jul</th><th>Jul Total</th>
+          <th>Aug</th><th>Aug Total</th>
+          <th>Sep</th><th>Sep Total</th>
+          <th>Oct</th><th>Oct Total</th>
+          <th>Nov</th><th>Nov Total</th>
+          <th>Dec</th><th>Dec Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Each product row -->
+        <!-- Example: Antel-20 -->
+        <tr><td>1</td><td>Antel-20</td><td class="price">27.73</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+        </tr>
+
+        <tr><td>2</td><td>Antel-40</td><td class="price">49.65</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+          <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+        </tr>
+
+        <tr><td>3</td><td>Antel-H</td><td class="price">80.02</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>4</td><td>Atast-10</td><td class="price">38.31</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>5</td><td>Atast-D3</td><td class="price">80.20</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>6</td><td>Biscard-2.5</td><td class="price">34.65</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>7</td><td>Biscard-5</td><td class="price">45.26</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>8</td><td>Cilvas-5</td><td class="price">41.46</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>9</td><td>Cilvas-10</td><td class="price">81.96</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>10</td><td>Cilvas-M</td><td class="price">97.07</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>11</td><td>Cilvas-T</td><td class="price">101.57</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>12</td><td>Eneril-2.5</td><td class="price">15.25</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>13</td><td>Eneril-5</td><td class="price">28.00</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>14</td><td>FA Forte</td><td class="price">34.70</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>15</td><td>Gabament</td><td class="price">160.07</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>16</td><td>Glimid-1</td><td class="price">27.73</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>17</td><td>Glimid-2</td><td class="price">43.36</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>18</td><td>Glimid-M1</td><td class="price">57.54</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>19</td><td>Glimid-M1 Forte</td><td class="price">58.50</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>20</td><td>Glimid-M2</td><td class="price">87.11</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>21</td><td>Glimid-M2 Forte</td><td class="price">88.71</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>22</td><td>Insuvil</td><td class="price">57.54</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>23</td><td>Insuvil-M</td><td class="price">68.61</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>24</td><td>Insuvil-DP</td><td class="price">146.25</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>25</td><td>Metclam</td><td class="price">22.50</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>26</td><td>Metclam Forte</td><td class="price">59.14</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>27</td><td>Neurocomb-D3</td><td class="price">115.37</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>28</td><td>Opirax-50</td><td class="price">66.54</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>29</td><td>Performin-500</td><td class="price">14.00</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>30</td><td>Performin 1000 SR</td><td class="price">29.86</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>31</td><td>Prothidep-25</td><td class="price">45.94</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>32</td><td>Prothidep-50</td><td class="price">61.07</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>33</td><td>Prothidep-75</td><td class="price">74.88</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>34</td><td>Rolant</td><td class="price">58.18</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>35</td><td>Rolant-DSR</td><td class="price">82.90</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>36</td><td>Shine-D3</td><td class="price">67.18</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+<tr><td>37</td><td>Trivomet</td><td class="price">126.64</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+  <td><input type="number" min="0"></td><td class="monthTotal">0</td>
+</tr>
+
+
+
+
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="3">Monthly Totals</td>
+          <td colspan="2" id="totalJan">0</td>
+          <td colspan="2" id="totalFeb">0</td>
+          <td colspan="2" id="totalMar">0</td>
+          <td colspan="2" id="totalApr">0</td>
+          <td colspan="2" id="totalMay">0</td>
+          <td colspan="2" id="totalJun">0</td>
+          <td colspan="2" id="totalJul">0</td>
+          <td colspan="2" id="totalAug">0</td>
+          <td colspan="2" id="totalSep">0</td>
+          <td colspan="2" id="totalOct">0</td>
+          <td colspan="2" id="totalNov">0</td>
+          <td colspan="2" id="totalDec">0</td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+
+  <script>
+    function calculateTotals() {
+      const rows = document.querySelectorAll("#salesTable tbody tr");
+      const monthlyTotals = Array(12).fill(0);
+
+      rows.forEach(row => {
+        const price = parseFloat(row.querySelector(".price").innerText);
+        const inputs = row.querySelectorAll("input");
+        const monthTotalCells = row.querySelectorAll(".monthTotal");
+
+        inputs.forEach((input, idx) => {
+          const qty = parseInt(input.value) || 0;
+          const amount = qty * price;
+          monthTotalCells[idx].innerText = amount.toFixed(2);
+          monthlyTotals[idx] += amount;
+        });
+      });
+function saveSalesData() {
+  const table = document.querySelector("table");
+  const rows = table.querySelectorAll("tbody tr");
+  const data = [];
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+    const product = {
+      slNo: cells[0].textContent.trim(),
+      name: cells[1].textContent.trim(),
+      pts: parseFloat(cells[2].textContent.trim()),
+      monthly: {}
+    };
+
+    // Loop through months (each has quantity and total)
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    for (let i = 0; i < 12; i++) {
+      const qty = parseInt(cells[3 + i * 2].textContent.trim()) || 0;
+      const total = parseFloat(cells[4 + i * 2].textContent.trim()) || 0.00;
+      product.monthly[monthNames[i]] = { quantity: qty, total: total };
+    }
+
+    data.push(product);
+  });
+
+  // Convert to JSON and trigger download
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "sales_data.json";
+  link.click();
+}
+
+function updateSalesData() {
+  const rows = document.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+    const pts = parseFloat(cells[2].textContent.trim());
+
+    // Loop through 12 months (each has quantity and total)
+    for (let i = 0; i < 12; i++) {
+      const qtyCell = cells[3 + i * 2];
+      const totalCell = cells[4 + i * 2];
+
+      const qty = parseInt(qtyCell.textContent.trim()) || 0;
+      const total = (qty * pts).toFixed(2);
+
+      totalCell.textContent = total;
+    }
+  });
+
+  alert("Sales data updated successfully!");
+}
+
+
+
+
+      // Update monthly totals
+      document.getElementById("totalJan").innerText = monthlyTotals[0].toFixed(2);
+      document.getElementById("totalFeb").innerText = monthlyTotals[1].toFixed(2);
+      document.getElementById("totalMar").innerText = monthlyTotals[2].toFixed(2);
+      document.getElementById("totalApr").innerText = monthlyTotals[3].toFixed(2);
+      document.getElementById("totalMay").innerText = monthlyTotals[4].toFixed(2);
+      document.getElementById("totalJun").innerText = monthlyTotals[5].toFixed(2);
+      document.getElementById("totalJul").innerText = monthlyTotals[6].toFixed(2);
+      document.getElementById("totalAug").innerText = monthlyTotals[7].toFixed(2);
+      document.getElementById("totalSep").innerText = monthlyTotals[8].toFixed(2);
+      document.getElementById("totalOct").innerText = monthlyTotals[9].toFixed(2);
+      document.getElementById("totalNov").innerText = monthlyTotals[10].toFixed(2);
+      document.getElementById("totalDec").innerText = monthlyTotals[11].toFixed(2);
+    }
+  </script>
+</body>
+</html>
